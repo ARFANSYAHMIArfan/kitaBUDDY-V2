@@ -1,0 +1,126 @@
+{
+  "reports": [
+    {
+      "reference": "KB-20261021-0B89F3",
+      "trackingCode": "SAFE-DD020E",
+      "reportType": "text",
+      "category": "physical",
+      "description": "Test report after streamling",
+      "urgent": false,
+      "status": "Diterima",
+      "publicUpdate": "Laporan anda telah selamat diterima oleh sistem SAFE. Pihak sekolah sedang meneliti maklumat ini dengan kerahsiaan penuh.",
+      "hasMedia": false,
+      "createdAt": "2026-10-21T01:29:44.512Z",
+      "updatedAt": "2026-10-21T01:29:44.512Z"
+    },
+    {
+      "reference": "KB-20261020-B1499C",
+      "trackingCode": "SAFE-6C0CAF",
+      "reportType": "text",
+      "category": "verbal",
+      "description": "Test bullying report description for debugging",
+      "urgent": false,
+      "status": "Diterima",
+      "publicUpdate": "Laporan anda telah selamat diterima oleh sistem SAFE. Pihak sekolah sedang meneliti maklumat ini dengan kerahsiaan penuh.",
+      "hasMedia": false,
+      "createdAt": "2026-10-20T21:57:31.438Z",
+      "updatedAt": "2026-10-20T21:57:31.438Z"
+    },
+    {
+      "reference": "KB-20261020-DEMO",
+      "trackingCode": "KB-SAFE-7788",
+      "reportType": "text",
+      "category": "verbal",
+      "description": "Terdapat kumpulan pelajar mengejek fizikal dan pakaian seragam rakan sekelas sewaktu waktu rehat di belakang kantin.",
+      "incidentDate": "2026-10-19",
+      "location": "Belakang Kantin Sekolah",
+      "urgent": true,
+      "status": "Dalam Semakan",
+      "publicUpdate": "Laporan telah diterima oleh Guru Kaunseling. Sesi perbincangan awal sedang dijadualkan.",
+      "hasMedia": false,
+      "createdAt": "2026-10-20T07:20:31.478Z",
+      "updatedAt": "2026-10-20T07:20:31.479Z"
+    },
+    {
+      "reference": "KB-20261018-CYBER",
+      "trackingCode": "KB-SAFE-1234",
+      "reportType": "text",
+      "category": "cyber",
+      "description": "Penyebaran gambar dan perkataan memalukan dalam grup media sosial pelajar Tingkatan 3.",
+      "incidentDate": "2026-10-18",
+      "location": "Kumpulan Media Sosial / Dalam Talian",
+      "urgent": false,
+      "status": "Tindakan Susulan",
+      "publicUpdate": "Pentadbir telah menghubungi pentadbir grup dan sesi kaunseling sokongan telah diberikan kepada mangsa.",
+      "hasMedia": false,
+      "createdAt": "2026-10-18T07:20:31.479Z",
+      "updatedAt": "2026-10-20T07:20:31.479Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr-superadmin",
+      "studentId": "rfnsyhmi@kitabuddy.dpdns.org",
+      "name": "Arfan Syahmi",
+      "role": "superadmin"
+    },
+    {
+      "id": "usr-1",
+      "studentId": "admin",
+      "name": "Pentadbir Sistem KB",
+      "role": "admin"
+    },
+    {
+      "id": "usr-2",
+      "studentId": "kaunselor01",
+      "name": "Cikgu Aminah (Guru Kaunseling)",
+      "role": "counselor"
+    },
+    {
+      "id": "usr-3",
+      "studentId": "guru01",
+      "name": "Cikgu Razak (Guru Disiplin)",
+      "role": "teacher"
+    },
+    {
+      "id": "usr-4",
+      "studentId": "student101",
+      "name": "Ahmad Daniel (Tingkatan 2)",
+      "role": "student"
+    }
+  ],
+  "legacyReports": [
+    {
+      "id": "rep-1",
+      "student": "Amirul Haziq",
+      "class": "2 Amanah",
+      "issue": "Ejekan lisan berulang waktu rehat",
+      "status": "Selesai",
+      "date": "15/10/2026"
+    },
+    {
+      "id": "rep-2",
+      "student": "Siti Sarah",
+      "class": "3 Cekap",
+      "issue": "Dipalau dan diugut dalam grup WhatsApp kelas",
+      "status": "Dalam Siasatan",
+      "date": "18/10/2026"
+    }
+  ],
+  "featureUsage": {
+    "1": 72,
+    "3": 59,
+    "lapor": 30,
+    "safe-framework": 41
+  },
+  "features": {
+    "sos-spdb": {
+      "title": "SOS BULI (SPDB)",
+      "status": "Active",
+      "message": "Pautan terus ke portal aduan kecemasan SPDB KPM."
+    }
+  },
+  "settings": {
+    "maintenanceMode": false
+  }
+}
