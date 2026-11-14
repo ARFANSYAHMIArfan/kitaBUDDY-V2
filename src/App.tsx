@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Youtube, ShieldAlert, Music, Gamepad2, BookOpen,
+  Youtube, ShieldAlert, ShieldCheck, FlaskConical, Music, Gamepad2, BookOpen,
   Star, Home, StickyNote, MessageCircleHeart, Gavel, HeartHandshake, Siren, 
   LogOut, School, Plus, X, ArrowRight, Sparkles, UserCircle, Lock, Key, ArrowLeft, Loader2,
   Unlock, Users, FileText, Activity, AlertTriangle, Settings, 
@@ -20,6 +20,7 @@ import { SafeReportPage } from './components/SafeReportPage';
 import { SAFEFrameworkPage } from './components/SAFEFrameworkPage';
 import { SafeStaffDashboard } from './components/SafeStaffDashboard';
 import { BudiChatbotPage } from './components/BudiChatbotPage';
+import { SapaPage } from './components/SapaPage';
 
 const isSuperAdminEmail = (email?: string) => {
   return (email || '').toLowerCase().trim() === 'rfnsyhmi@kitabuddy.dpdns.org';
@@ -291,6 +292,14 @@ const App: React.FC = () => {
       icon: Siren, 
       color: 'text-red-500 animate-pulse',
     },
+    {
+      id: 'sapa',
+      title: 'S.A.P.A: Suara Anonim, Peduli Anda',
+      subtitle: 'Laporkan kes buli atau dapatkan bantuan segera',
+      badge: 'BETA',
+      icon: ShieldCheck,
+      color: 'text-[#81B29A]',
+    },
   ];
 
   const handleFeatureClick = (item: MenuItem) => {
@@ -332,7 +341,7 @@ const App: React.FC = () => {
       }
     }
 
-    if (item.id === 'budi-chatbot' || item.id === 'sos-spdb' || item.id === 'lapor' || item.id === 'safe-framework') {
+    if (item.id === 'budi-chatbot' || item.id === 'sos-spdb' || item.id === 'lapor' || item.id === 'safe-framework' || item.id === 'sapa') {
       setSafeReturnView(ViewState.MENU);
       setSelectedFeature(item.id);
       setView(ViewState.PLACEHOLDER);
@@ -1434,13 +1443,29 @@ const App: React.FC = () => {
              <div 
                key={item.id}
                onClick={() => handleFeatureClick(item)}
-               className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4 active:scale-95 transition-transform"
+               role="button"
+               tabIndex={0}
+               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleFeatureClick(item); } }}
+               className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4 active:scale-[0.98] transition-all cursor-pointer hover:border-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#81B29A]"
              >
-                <div className={`p-3 rounded-xl bg-slate-50 ${item.color}`}>
+                <div className={`p-3 rounded-xl bg-slate-50 ${item.color} shrink-0`}>
                    <item.icon size={24} />
                 </div>
-                <span className="font-bold text-[#3D405B] flex-1">{item.title}</span>
-                <ArrowRight size={18} className="text-slate-300" />
+                <div className="flex-1 min-w-0">
+                   <div className="flex items-center gap-2 flex-wrap">
+                     <span className="font-bold text-[#3D405B]">{item.title}</span>
+                     {item.badge && (
+                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-[#E07A5F]/15 text-[#E07A5F] border border-[#E07A5F]/25 shrink-0">
+                         <FlaskConical size={11} />
+                         {item.badge}
+                       </span>
+                     )}
+                   </div>
+                   {item.subtitle && (
+                     <p className="text-xs text-slate-500 font-nunito mt-0.5">{item.subtitle}</p>
+                   )}
+                </div>
+                <ArrowRight size={18} className="text-slate-300 shrink-0" />
              </div>
           ))}
        </div>
@@ -1449,7 +1474,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      {maintenanceMode && !maintenanceBypass && !isStaffAdmin(userRole, userEmail) && !(view === ViewState.PLACEHOLDER && (selectedFeature === 'sos-spdb' || selectedFeature === 'lapor' || selectedFeature === 'safe-framework' || selectedFeature === 'budi-chatbot')) ? (
+      {maintenanceMode && !maintenanceBypass && !isStaffAdmin(userRole, userEmail) && !(view === ViewState.PLACEHOLDER && (selectedFeature === 'sos-spdb' || selectedFeature === 'lapor' || selectedFeature === 'safe-framework' || selectedFeature === 'budi-chatbot' || selectedFeature === 'sapa')) ? (
          renderMaintenanceScreen()
       ) : (
          <>
@@ -1461,6 +1486,7 @@ const App: React.FC = () => {
             {view === ViewState.PLACEHOLDER && (
                <div className="min-h-screen bg-[#FDFBF7]">
                   {selectedFeature === 'budi-chatbot' && <BudiChatbotPage onBack={() => setView(safeReturnView || ViewState.MENU)} />}
+                  {selectedFeature === 'sapa' && <SapaPage onBack={() => setView(safeReturnView || ViewState.MENU)} />}
                   {(selectedFeature === 'sos-spdb' || selectedFeature === 'lapor') && <SafeReportPage userEmail={userEmail} userName={userName} onBack={() => setView(safeReturnView || ViewState.MENU)} />}
                   {selectedFeature === 'safe-framework' && <SAFEFrameworkPage onBack={() => setView(ViewState.MENU)} onReport={() => { setSafeReturnView(ViewState.MENU); setSelectedFeature('sos-spdb'); }} />}
                   {selectedFeature === '1' && <DefinisiBuli onBack={() => setView(ViewState.MENU)} />}

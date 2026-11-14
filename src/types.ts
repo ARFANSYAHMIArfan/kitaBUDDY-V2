@@ -11,6 +11,8 @@ export type Language = 'ms' | 'en';
 export interface MenuItem {
   id: string;
   title: string;
+  subtitle?: string;
+  badge?: string;
   icon: any;
   color: string;
   action?: () => void;
